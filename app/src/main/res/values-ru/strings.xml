@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Пятнашки</string>
+    <string name="victoryMessage">Вы выиграли!</string>
+    <string name="btnStartGame">Начать игру</string>
+    <string name="btnAboutGame">Об игре</string>
+    <string name="btnQuitGame">Выйти</string>
+    <string name="textAboutGame">
+        Разработал pirateHell, 2019-2020гг.\n
+        Два пива автору!
+    </string>
+    <string name="btnBack">Назад</string>
+    <string name="btnShuffle">Перемешать</string>
+    <string name="btnCancel">Отмена</string>
+    <string name="tvTurns">"Ходов: "</string>
+</resources>

@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">FifteenGame</string>
+    <string name="victoryMessage">You Win!</string>
+    <string name="btnStartGame">Start Game</string>
+    <string name="btnAboutGame">About Game</string>
+    <string name="btnQuitGame">Quit</string>
+    <string name="btnBack">Back</string>
+    <string name="btnShuffle">Shuffle</string>
+    <string name="textAboutGame">Made by pirateHell, 2019-2020yy. Two beers for author!!!!</string>
+    <string name="btnCancel">Cancel</string>
+    <string name="tvTurns">"Turns: "</string>
+</resources>
