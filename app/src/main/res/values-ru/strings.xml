@@ -13,4 +13,11 @@
     <string name="btnShuffle">Перемешать</string>
     <string name="btnCancel">Отмена</string>
     <string name="tvTurns">"Ходов: "</string>
+    <string name="btnLeaderboard">Рекорды</string>
+    <string name="WinMessageHeader1">"Вы получили "</string>
+    <string name="WinMessageHeader2">очков!</string>
+    <string name="WinMessageAskName">Введите своё имя:</string>
+    <string name="WinMessageSendButton">Отправить</string>
+    <string name="btnClear">Очистить</string>
+    <string name="VERSION">v1.2</string>
 </resources>

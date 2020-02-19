@@ -4,37 +4,39 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".MainActivity">
+    tools:context=".LeaderboardActivity"
+    android:orientation="vertical">
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/app_name"
+        android:text="@string/btnLeaderboard"
         android:textSize="50sp"
         android:textColor="#ffffff"
         android:gravity="center_horizontal"/>
+
+    <ListView
+        android:id="@+id/leaderboard_list"
+        android:layout_width="match_parent"
+        android:layout_height="404dp"/>
+
+    <Spinner
+        android:id="@+id/leaderboard_spinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/btnStartGame"
+        android:text="@string/btnClear"
         android:textSize="30sp"
-        android:id="@+id/btnStartGame"/>
+        android:id="@+id/btnClear"/>
+
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/btnLeaderboard"
+        android:text="@string/btnBack"
         android:textSize="30sp"
-        android:id="@+id/btnUsersBoard"/>
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/btnAboutGame"
-        android:textSize="30sp"
-        android:id="@+id/btnAboutGame"/>
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/btnQuitGame"
-        android:textSize="30sp"
-        android:id="@+id/btnQuitGame"/>
+        android:id="@+id/btnBack"/>
+
 </LinearLayout>

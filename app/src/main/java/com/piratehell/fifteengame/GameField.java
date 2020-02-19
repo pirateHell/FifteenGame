@@ -2,7 +2,6 @@ package com.piratehell.fifteengame;
 
 import android.content.Context;
 import android.os.CountDownTimer;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -96,23 +95,14 @@ class GameField {
                     }
                 }
 
-                String s = "";
-                Log.d("TTT Size", "" + fieldArrayHistory.size());
-                for (int i = 0; i < 4; i++) {
-                    for (int j = 0; j < 4; j++) {
-                        s += (fieldArrayHistory.peek())[i][j] + " ";
-                    }
-                }
-                Log.d("TTT Value", s);
-
                 drawFieldArray();
                 checkWin();
             }
-            //Toast.makeText(getApplicationContext(), "x: " + x + ", y:" + y, Toast.LENGTH_LONG).show();
         }
     };
-    private static int turns;
+    protected static int turns;
     private Context ctx;
+    static boolean isGameAlive = false;
 
     GameField(Button[][] b, TextView tvTurns, Context ctx) {
         fieldUI = b;
@@ -164,7 +154,6 @@ class GameField {
     public void setOnClickFieldUI() {
         for (int i = 0; i < 4; i++) {
             for  (int j = 0; j < 4; j++) {
-                //fieldUI[i][j].setHeight(fieldUI[i][j].getWidth());
                 fieldUI[i][j].setOnClickListener(ocl);
             }
         }
@@ -186,7 +175,6 @@ class GameField {
     public void drawFieldArray() {
         for (int i = 0; i < 4; i++) {
             for (int j = 0; j < 4; j++) {
-                //fieldUI[i][j].setHeight(fieldUI[i][j].getWidth());
                 if (fieldArray[i][j] != 0) {
                     fieldUI[i][j].setText("" + fieldArray[i][j]);
                     fieldUI[i][j].setEnabled(true);
@@ -199,22 +187,6 @@ class GameField {
         }
     }
     public boolean validateFieldArray() {
-        /*fieldArray[0][0] = 1;
-        fieldArray[0][1] = 2;
-        fieldArray[0][2] = 3;
-        fieldArray[0][3] = 4;
-        fieldArray[1][0] = 5;
-        fieldArray[1][1] = 6;
-        fieldArray[1][2] = 7;
-        fieldArray[1][3] = 8;
-        fieldArray[2][0] = 9;
-        fieldArray[2][1] = 10;
-        fieldArray[2][2] = 11;
-        fieldArray[2][3] = 12;
-        fieldArray[3][0] = 13;
-        fieldArray[3][1] = 15;
-        fieldArray[3][2] = 14;
-        fieldArray[3][3] = 0;*/
         int summ = 0;
         int zeroLine = -1;
         int[] arr = new int[16];
@@ -256,6 +228,7 @@ class GameField {
                     fieldUI[i][j].setEnabled(false);
                 }
             }
+            isGameAlive = true;
         }
     }
     public void restart() {
@@ -264,6 +237,7 @@ class GameField {
             if (validateFieldArray()) break;
         }
         fieldArrayHistory.clear();
+        isGameAlive = false;
         int[][] a = new int[4][4];
         for (int i = 0; i < 4; i++) {
             for (int j = 0; j < 4; j++) {
@@ -277,16 +251,18 @@ class GameField {
         setOnClickFieldUI();
     }
     public void cancel() {
-        if (fieldArrayHistory.size() > 1) {
-            fieldArrayHistory.pop();
-            for (int i = 0; i < 4; i++) {
-                for (int j = 0; j < 4; j++) {
-                    fieldArray[i][j] = (fieldArrayHistory.peek())[i][j];
+        if (!isGameAlive) {
+            if (fieldArrayHistory.size() > 1) {
+                fieldArrayHistory.pop();
+                for (int i = 0; i < 4; i++) {
+                    for (int j = 0; j < 4; j++) {
+                        fieldArray[i][j] = (fieldArrayHistory.peek())[i][j];
+                    }
                 }
+                turns--;
+                tvTurns.setText("" + turns);
+                drawFieldArray();
             }
-            turns--;
-            tvTurns.setText("" + turns);
-            drawFieldArray();
         }
     }
 }

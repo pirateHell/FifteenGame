@@ -4,37 +4,50 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".MainActivity">
+    tools:context=".WinActivity"
+    android:orientation="vertical">
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/app_name"
+        android:id="@+id/win_message_header1"
+        android:text="@string/WinMessageHeader1"
         android:textSize="50sp"
         android:textColor="#ffffff"
         android:gravity="center_horizontal"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/win_message_header2"
+        android:text=""
+        android:textSize="50sp"
+        android:textColor="#ffffff"
+        android:gravity="center_horizontal"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/win_message_header3"
+        android:text="@string/WinMessageHeader2"
+        android:textSize="50sp"
+        android:textColor="#ffffff"
+        android:gravity="center_horizontal"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/edit_name"
+        android:hint="@string/WinMessageAskName"
+        android:ems="20"
+        android:minEms="1"
+        android:maxEms="20"/>
+
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/btnStartGame"
+        android:text="@string/WinMessageSendButton"
         android:textSize="30sp"
-        android:id="@+id/btnStartGame"/>
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/btnLeaderboard"
-        android:textSize="30sp"
-        android:id="@+id/btnUsersBoard"/>
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/btnAboutGame"
-        android:textSize="30sp"
-        android:id="@+id/btnAboutGame"/>
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/btnQuitGame"
-        android:textSize="30sp"
-        android:id="@+id/btnQuitGame"/>
+        android:id="@+id/send_result"/>
+
 </LinearLayout>

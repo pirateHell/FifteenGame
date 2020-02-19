@@ -5,9 +5,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
-    Button btnStartGame, btnAboutGame, btnQuitGame;
+    Button btnStartGame, btnUsersBoard, btnAboutGame, btnQuitGame;
     View.OnClickListener ocl;
     Intent intent;
 
@@ -16,6 +17,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         btnStartGame = findViewById(R.id.btnStartGame);
+        btnUsersBoard = findViewById(R.id.btnUsersBoard);
         btnAboutGame = findViewById(R.id.btnAboutGame);
         btnQuitGame = findViewById(R.id.btnQuitGame);
         ocl = new View.OnClickListener() {
@@ -26,19 +28,22 @@ public class MainActivity extends AppCompatActivity {
                         intent = new Intent(MainActivity.this, GameActivity.class);
                         startActivity(intent);
                         break;
+                    case R.id.btnUsersBoard:
+                        intent = new Intent(MainActivity.this, LeaderboardActivity.class);
+                        startActivity(intent);
+                        break;
                     case R.id.btnAboutGame:
-                        //Toast.makeText(getApplicationContext(), "2", Toast.LENGTH_SHORT).show();
                         intent = new Intent(MainActivity.this, AboutGameActivity.class);
                         startActivity(intent);
                         break;
                     case R.id.btnQuitGame:
-                        //Toast.makeText(getApplicationContext(), "3", Toast.LENGTH_SHORT).show();
                         finish();
                         break;
                 }
             }
         };
         btnStartGame.setOnClickListener(ocl);
+        btnUsersBoard.setOnClickListener(ocl);
         btnAboutGame.setOnClickListener(ocl);
         btnQuitGame.setOnClickListener(ocl);
     }

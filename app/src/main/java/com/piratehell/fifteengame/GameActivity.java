@@ -1,10 +1,15 @@
 package com.piratehell.fifteengame;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class GameActivity extends AppCompatActivity {
     Button[][] fieldUI = new Button[4][4];
@@ -48,13 +53,36 @@ public class GameActivity extends AppCompatActivity {
         btnShuffle.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                gameField.restart();
+                if (!gameField.isGameAlive) gameField.restart();
+                else {
+                    int minRecord = 0;
+                    DBHelper dbHelper = new DBHelper(getApplicationContext());
+                    SQLiteDatabase database = dbHelper.getWritableDatabase();
+                    String q = "SELECT " + DBHelper.COLUMN_RESULT + " FROM " + DBHelper.TABLE_NAME + " ORDER BY " + DBHelper.COLUMN_RESULT + " ASC";
+                    Cursor cursor = database.rawQuery(q, null);
+                    int i = 0;
+                    while (cursor.moveToNext()) {
+                        minRecord = cursor.getInt(cursor.getColumnIndex(DBHelper.COLUMN_RESULT));
+                        i++;
+                        if (i == 5) break;
+                    }
+                    cursor.close();
+                    if (i < 5 || (i >= 5 && minRecord > GameField.turns)) {
+                        Intent intent = new Intent(GameActivity.this, WinActivity.class);
+                        intent.putExtra("Result", GameField.turns);
+                        startActivity(intent);
+                        gameField.restart();
+                    }
+                    else
+                        gameField.restart();
+                }
             }
         });
         btnCancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                gameField.cancel();
+                if (!gameField.isGameAlive) gameField.cancel();
+                else Toast.makeText(getApplicationContext(), R.string.btnShuffle, Toast.LENGTH_LONG).show();
             }
         });
     }

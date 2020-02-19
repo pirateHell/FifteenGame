@@ -9,4 +9,11 @@
     <string name="textAboutGame">Made by pirateHell, 2019-2020yy. Two beers for author!!!!</string>
     <string name="btnCancel">Cancel</string>
     <string name="tvTurns">"Turns: "</string>
+    <string name="btnLeaderboard">Leaderboard</string>
+    <string name="WinMessageHeader1">"You have gotten "</string>
+    <string name="WinMessageHeader2">points!</string>
+    <string name="WinMessageAskName">Enter your name:</string>
+    <string name="WinMessageSendButton">Send</string>
+    <string name="btnClear">Clear</string>
+    <string name="VERSION">v1.2</string>
 </resources>
